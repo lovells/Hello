@@ -60,11 +60,18 @@ class GithubModelTickets extends JModel
 	
 	//Show the informations of a blob
 	function get_show_blob(){
-	Github_Autoloader::register();
-	$github = new Github_Client();
-	$blob = $github->getObjectApi()->showBlob('lovells', 'Hello', '9a274c8aeed1b1ca43734c820e2607a3c73e0353', 'com_github/github.php');
-	//$blobs = $github->getObjectApi()->listBlobs('ornicar', 'php-github-api', '691c2ec7fd0b948042047b515886fec40fe76e2b');
-	return $blob;
+		Github_Autoloader::register();
+		$github = new Github_Client();
+		$blob = $github->getObjectApi()->showBlob('lovells', 'Hello', '9a274c8aeed1b1ca43734c820e2607a3c73e0353', 'com_github/github.php');
+		return $blob;
+	}
+	
+	//List all blobs of a tree
+	function get_list_blob(){
+		Github_Autoloader::register();
+		$github = new Github_Client();
+		$blobs = $github->getObjectApi()->listBlobs('lovells', 'Hello', '9a274c8aeed1b1ca43734c820e2607a3c73e0353');
+		return $blob;
 	}
 	
 	//Show the raw content of an object
@@ -73,6 +80,22 @@ class GithubModelTickets extends JModel
 		$github = new Github_Client();
 		$rawText = $github->getObjectApi()->getRawData('lovells', 'Hello', '9a274c8aeed1b1ca43734c820e2607a3c73e0353');
 		return $rawText;
+	}
+	
+	//List commits in a branch
+	function get_list_commits_branch(){
+		Github_Autoloader::register();
+		$github = new Github_Client();
+		$commits = $github->getCommitApi()->getBranchCommits('lovells', 'Hello', 'master');
+		return $commits;
+	}
+	
+	//List commits for a file
+	function get_list_commit_file(){
+		Github_Autoloader::register();
+		$github = new Github_Client();
+		$file = $github->getCommitApi()->getFileCommits('lovells', 'Hello', 'master', 'com_github/github.php');
+		return $file;
 	}
 } 
 ?>

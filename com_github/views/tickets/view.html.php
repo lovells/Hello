@@ -28,6 +28,18 @@ class GithubViewTickets extends JView
 		
 		$raw_content = $model->get_raw_content();
 		
+		$list_commits_branch = $model->get_list_commits_branch();
+		
+		$list_commit_file = $model->get_list_commit_file();
+		
+		$list_blob = $model->get_list_blob();
+		
+		print_r($list_blob);
+		
+		print_r($list_commit_file);
+		
+		print_r($list_commits_branch);
+		
 		print_r($raw_content);
 		
 		print_r($repos);
