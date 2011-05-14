@@ -24,7 +24,7 @@ if ($c = $select)
 }
 
 $controllerName = 'GithubController'.$controller;
-$controller = new $controllerName();//echo $controller->execute( JRequest::getCmd('task') );
+$controller = new $controllerName();
 $controller->execute(JRequest :: getCmd('task', 'display'));				
 
 $controller->redirect();
